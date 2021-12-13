@@ -16,11 +16,14 @@ namespace KIT206_RAP_Project
     {
         public static void Main(string[] args)
         {
+           
 
-            ERDAdapter Adapter1 = new ERDAdapter();
-            ResearcherController R_Cont=new ResearcherController();
+            ResearcherController R_Cont =new ResearcherController();
             PublicationsController P_Cont=new PublicationsController();
 
+            R_Cont.LoadResearchers();
+
+           
             
         }
 

@@ -25,6 +25,7 @@ namespace KIT206_RAP_Project.Database
         public List<Research.Researcher> fetchBasicResearcherDetails()
         {
             conn = GetConnection();
+           
             List<Researcher> ResearcherList = new List<Researcher>();
             MySqlDataReader rdr = null;
 
@@ -38,6 +39,7 @@ namespace KIT206_RAP_Project.Database
                 while (rdr.Read())
                 {
                     ResearcherList.Add(new Researcher { GivenName = rdr.GetString(1), FamilyName=rdr.GetString(2), Id = rdr.GetInt32(0) });
+                   
                 }
             }
             finally
@@ -52,12 +54,7 @@ namespace KIT206_RAP_Project.Database
                 }
             }
 
-            foreach (Researcher r1 in ResearcherList)
-            {
-                Console.WriteLine(r1);
-                string PauseNow = Console.ReadLine();
-                
-            }
+            
 
             return ResearcherList;
 
