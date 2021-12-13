@@ -79,7 +79,11 @@ namespace KIT206_RAP_Project.Database
 
                 while (rdr.Read())
                 {
-                  ;
+                    r.Id=rdr.GetInt32(0);
+                    r.GivenName = rdr.GetString(1);
+                    r.FamilyName = rdr.GetString(2);
+                    r.Title = rdr.GetString(3);
+
 
                 }
             }
@@ -94,7 +98,7 @@ namespace KIT206_RAP_Project.Database
                     conn.Close();
                 }
             }
-            return null;
+            return r;
         }
 
 
