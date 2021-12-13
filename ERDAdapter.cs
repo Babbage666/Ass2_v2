@@ -60,11 +60,7 @@ namespace KIT206_RAP_Project.Database
 
         }
 
-        public Research.Researcher fetchFullResearcherDetails(int id)
-        {
-            return null;
-        }
-
+       
         public Research.Researcher completeResearcherDetails(Research.Researcher r)
         {
             return null;

@@ -49,19 +49,7 @@ namespace KIT206_RAP_Project.Control
 
         public void LoadResearcherDetails(int IDnum)
         {
-            ERDAdapter Adapter1 = new ERDAdapter();
-            List<Researcher> ResearcherList2 = new List<Researcher>();
-            ResearcherList2 = Adapter1.fetchBasicResearcherDetails();
-            foreach (Researcher r1 in ResearcherList2)
-            {
-                if (r1.Id == IDnum)
-                {
-                    Console.WriteLine("Entered Load Researcher Details function.");
-                    Console.WriteLine("{0}  {1}   {2}   {3}  {4}", r1.Id, r1.GivenName, r1.FamilyName,r1.Email,r1.Campus,r1.School);
-                }
-            }
-            Console.WriteLine("Press a key...");
-            Console.ReadKey();
+            
             return;
         }
 
