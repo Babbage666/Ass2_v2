@@ -12,7 +12,7 @@ using KIT206_RAP_Project.Database;
 
 namespace KIT206_RAP_Project.Database
 {
-    class ERDAdapater
+    class ERDAdapter
     {
 
         public static MySqlConnection conn { get; set; }
