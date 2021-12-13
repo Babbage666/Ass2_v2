@@ -50,9 +50,7 @@ namespace KIT206_RAP_Project.Control
         public void LoadResearcherDetails(int IDnum)
         {
             ERDAdapter Adapter1 = new ERDAdapter();
-           
-           
-            
+            //Researcher res1 = Adapter1.fullResearcherDetails(int IDnum);
             Console.WriteLine("Press a key...");
             Console.ReadKey(); ;
         }

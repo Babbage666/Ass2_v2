@@ -83,6 +83,10 @@ namespace KIT206_RAP_Project.Database
                     r.GivenName = rdr.GetString(1);
                     r.FamilyName = rdr.GetString(2);
                     r.Title = rdr.GetString(3);
+                    r.School = rdr.GetString(4);
+                    r.Campus = rdr.GetString(5);
+                    r.Email = rdr.GetString(6);
+                    r.PhotoURL = rdr.GetString(7);
 
 
                 }
