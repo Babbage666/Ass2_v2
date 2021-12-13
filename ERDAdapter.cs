@@ -66,7 +66,39 @@ namespace KIT206_RAP_Project.Database
             return null;
         }
 
-        
+        public Research.Researcher fullResearcherDetails(int id_num)
+        {
+            Researcher r = new Researcher();
+            MySqlDataReader rdr = null;
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select * from researcher where researcher_id=?id_num", conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                  ;
+
+                }
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return null;
+        }
+
+
+
 
         public List<Research.Publication> fetchBasicPublicationDetails(Research.Researcher r)
         {
