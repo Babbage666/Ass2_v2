@@ -51,6 +51,15 @@ namespace KIT206_RAP_Project.Control
         {
             ERDAdapter Adapter1 = new ERDAdapter();
             Researcher res1 = Adapter1.fullResearcherDetails(IDnum);
+            Console.WriteLine(res1.Id);
+            Console.WriteLine(res1.FamilyName);
+            Console.WriteLine(res1.GivenName);
+            Console.WriteLine(res1.Title);
+            Console.WriteLine(res1.Campus);
+            Console.WriteLine(res1.School);
+            Console.WriteLine(res1.Email);
+            Console.WriteLine(res1.PhotoURL);
+            // Publication details for this Researcher
             Console.WriteLine("Press a key...");
             Console.ReadKey(); ;
         }
