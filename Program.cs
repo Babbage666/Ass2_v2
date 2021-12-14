@@ -19,7 +19,7 @@ namespace KIT206_RAP_Project
            
 
             ResearcherController R_Cont =new ResearcherController();
-            PublicationsController P_Cont=new PublicationsController();
+            
 
             R_Cont.LoadResearchers();
             R_Cont.LoadResearcherDetails(123460);

@@ -59,9 +59,13 @@ namespace KIT206_RAP_Project.Control
             Console.WriteLine(res1.School);
             Console.WriteLine(res1.Email);
             Console.WriteLine(res1.PhotoURL);
-            // Publication details for this Researcher
+           
             Console.WriteLine("Press a key...");
-            Console.ReadKey(); ;
+            Console.ReadKey(); 
+
+            // Publications for this Researcher:
+            PublicationsController PC=new PublicationsController();
+            //PC.LoadPublicationsFor(res1);
         }
 
        

@@ -111,7 +111,40 @@ namespace KIT206_RAP_Project.Database
 
         public List<Research.Publication> fetchBasicPublicationDetails(Research.Researcher r)
         {
-            return null;
+             conn = GetConnection();
+           
+            List<Publication> PublicationsList = new List<Publication>();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select * from researcher_publication where id=?id_num", conn);
+                cmd.Parameters.AddWithValue("id_num",r.Id);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    PublicationsList.Add(new Publication { DOI=rdr.GetString(1) });
+                   
+                }
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            
+
+            return PublicationsList;
         }
         
         public List<Research.Publication> completePublicationDetails(Publication p)

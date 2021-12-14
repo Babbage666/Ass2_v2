@@ -16,9 +16,10 @@ namespace KIT206_RAP_Project.Control
     {
 
         
-        public Research.Publication[] LoadPublicationsFor(Research.Researcher r)
+        public List<Publication> LoadPublicationsFor(Research.Researcher r)
         {
-            return null;
+
+           return null;
         }
 
 
