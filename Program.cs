@@ -22,7 +22,7 @@ namespace KIT206_RAP_Project
             PublicationsController P_Cont=new PublicationsController();
 
             R_Cont.LoadResearchers();
-            //R_Cont.LoadResearcherDetails(123460);
+            R_Cont.LoadResearcherDetails(123460);
            
             
         }

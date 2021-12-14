@@ -74,7 +74,8 @@ namespace KIT206_RAP_Project.Database
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select * from researcher where researcher_id=?id_num", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from researcher where id=?id_num", conn);
+                cmd.Parameters.AddWithValue("id_num",id_num);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
