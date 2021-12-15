@@ -1,0 +1,35 @@
+Hi Jon,
+
+ 
+
+Black box tests are all good; however, the white box tests also seem to be very close to the abstraction levels of the
+ Black box test. Scope of black-box vs white box testing is I/O vs Code coverage respectively. At the design stage,
+ you will have more confidence and certainty about the Black Box tests as they are very close to the requirements
+ and input outputs of the program. White box test, on the other hand, is the developer’s/coder’s test for example, 
+in  UC34: White box test with criteria “Check a year range which is known to have no results, such as 1900 to 1910…..” 
+is a good white box test. But you need to test all boundaries that are covered by the if conditions in your code.
+
+ 
+
+Similarly, In UC16, the white box test case for calculating the cumulative count/performance is also a valid white box
+ test as it is testing the implementation of the formula within the code.
+
+ 
+
+The rest of the test cases seem to be I/O related therefore I will consider them as Black box instead of white.
+
+ 
+
+I recommend keeping the test report in the current state and coming back to it especially to white box test
+ cases once you have achieved code completion. You will be able to reverse engineer some good white box test cases,
+ mostly the ones that fail.
+
+ 
+
+I hope this answers your query, we can discuss more about this if have questions.
+
+ 
+
+Regards,
+
+Bilal
