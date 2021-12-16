@@ -106,6 +106,44 @@ namespace KIT206_RAP_Project.Database
             return r;
         }
 
+         public static List<Publication> LoadPublications(int Id)
+        {
+            conn = GetConnection();
+            List<Publication> TestPubList = new List<Publication>();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select title, year, type, available " +
+                 "from publication as pub, researcher_publication as respub " +
+                 "where pub.doi = respub.doi and researcher_id=?id", conn);
+                cmd.Parameters.AddWithValue("id", Id);
+
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    TestPubList.Add(new Publication
+                        { Title = rdr.GetString(0), Date = rdr.GetDateTime(1), Type = Publication.ParseEnum<Publication.OutputType>(rdr.GetString(2)), AvailableDate = rdr.GetDateTime(3)});
+                }
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return TestPubList;
+        }
+
 
 
 

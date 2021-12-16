@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace KIT206_RAP_Project.Research
 {
-    public enum OutputType
+    
+
+    public class Publication
+    {
+
+        public enum OutputType
     {
         
         Conference,
         Journal,
         Other
     }
-
-    public class Publication
-    {
 
         private string doi; 
 
@@ -140,6 +142,11 @@ namespace KIT206_RAP_Project.Research
         public int Age()
         {
             return 0;
+        }
+
+        public static T ParseEnum<T>(string value)
+        {
+            return (T)Enum.Parse(typeof(T), value);
         }
 
 
