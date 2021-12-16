@@ -24,8 +24,13 @@ namespace KIT206_RAP_Project
             R_Cont.LoadResearcherDetails(123460);
 
             PublicationsController PC=new PublicationsController();
-            PC.LoadPublicationsForID(123460);
-           
+            List<Research.Publication> pubsList = new List<Research.Publication>();
+            pubsList=PC.LoadPublicationsForID(123460);
+            foreach(Publication p1 in pubsList)
+            {
+                Console.WriteLine("{0}", p1.DOI);
+            }
+           Console.ReadLine();
             
         }
 
