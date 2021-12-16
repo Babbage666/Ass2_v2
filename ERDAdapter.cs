@@ -12,7 +12,7 @@ using KIT206_RAP_Project.Database;
 
 namespace KIT206_RAP_Project.Database
 {
-    class ERDAdapter
+    public class ERDAdapter
     {
 
         public static MySqlConnection conn { get; set; }
@@ -106,10 +106,10 @@ namespace KIT206_RAP_Project.Database
             return r;
         }
 
-         public static List<Publication> LoadPublications(int Id)
+         public List<Research.Publication> LoadPublications(int Id)
         {
             conn = GetConnection();
-            List<Publication> TestPubList = new List<Publication>();
+            List<Research.Publication> TestPubList = new List<Research.Publication>();
             MySqlDataReader rdr = null;
 
             try

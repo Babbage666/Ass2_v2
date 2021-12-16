@@ -63,9 +63,7 @@ namespace KIT206_RAP_Project.Control
             Console.WriteLine("Press a key...");
             Console.ReadKey(); 
 
-            // Publications for this Researcher:
-            PublicationsController PC=new PublicationsController();
-            //PC.LoadPublicationsFor(res1);
+            
         }
 
        
