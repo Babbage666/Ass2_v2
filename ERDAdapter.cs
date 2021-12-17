@@ -21,6 +21,28 @@ namespace KIT206_RAP_Project.Database
         static string pass = "kit206";
         static string server = "alacritas.cis.utas.edu.au";
 
+        public static T ParseEnum<T>(string value)
+        {
+           return (T)Enum.Parse(typeof(T), value.Replace(" ","_"));
+        }
+
+        public string GetTitleFromLevel(EmploymentLevel level) {
+            switch (level) {
+                case EmploymentLevel.A:
+                    return "Postdoc";
+                case EmploymentLevel.B:
+                    return "Lecturer";
+                case EmploymentLevel.C:
+                    return "Senior Lecturer";
+                case EmploymentLevel.D:
+                    return "Associate Professor";
+                case EmploymentLevel.E:
+                    return "Professor";
+                default:
+                    return "LEVEL_NOT_FOUND";
+            }
+        }
+
 
         public List<Research.Researcher> fetchBasicResearcherDetails()
         {
@@ -38,7 +60,7 @@ namespace KIT206_RAP_Project.Database
 
                 while (rdr.Read())
                 {
-                    ResearcherList.Add(new Researcher { GivenName = rdr.GetString(1), FamilyName=rdr.GetString(2), Id = rdr.GetInt32(0) });
+                    ResearcherList.Add(new Researcher { GivenName = rdr.GetString(1), FamilyName=rdr.GetString(2), Id = rdr.GetInt32(0)});
                    
                 }
             }
@@ -106,7 +128,7 @@ namespace KIT206_RAP_Project.Database
             return r;
         }
 
-         public List<Research.Publication> LoadPublications(int Id)
+        public List<Research.Publication> LoadPublications(int Id)
         {
             conn = GetConnection();
             List<Research.Publication> TestPubList = new List<Research.Publication>();
@@ -130,7 +152,7 @@ namespace KIT206_RAP_Project.Database
 
                     TestPubList.Add(new Publication
                         {Title = rdr.GetString(0), Date=rdr.GetInt32(1) , Type=Publication.ParseEnum<Publication.OutputType>(rdr.GetString(2)),  AvailableDate=rdr.GetDateTime(3)});//
-                    
+                        //, level = GetTitleFromLevel(ParseEnum<EmploymentLevel>(rdr.GetString(3))
                                                     //{Title = rdr.GetString(0), Year=rdr.GetDateTime(1), Type=Publication.ParseEnum<Publication.OutputType>(rdr.GetString(2)),AvailableDate=rdr.GetString(4)});                                                                                                                                         
                 }
             }
@@ -148,8 +170,6 @@ namespace KIT206_RAP_Project.Database
 
             return TestPubList;
         }
-
-
 
 
         public List<Research.Publication> fetchBasicPublicationDetails(Research.Researcher r)
@@ -209,6 +229,5 @@ namespace KIT206_RAP_Project.Database
             }
             return conn;
         }
-
     }
 }

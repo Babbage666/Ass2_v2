@@ -18,19 +18,25 @@ namespace KIT206_RAP_Project
         {
            
 
-            ResearcherController R_Cont =new ResearcherController();
-            
-            R_Cont.LoadResearchers();
-            R_Cont.LoadResearcherDetails(123460);
+            ResearcherController R_Cont = new ResearcherController();
+            R_Cont.Display();
 
-            PublicationsController PC=new PublicationsController();
+            string resID;
+            resID = Console.ReadLine();
+            Console.Write(resID);
+
+            Console.ReadLine();
+            //R_Cont.LoadResearchers();
+            //R_Cont.LoadResearcherDetails(123460);
+
+            /*PublicationsController PC=new PublicationsController();
             List<Research.Publication> pubsList = new List<Research.Publication>();
             pubsList=PC.LoadPublicationsForID(123460);
             foreach(Publication p1 in pubsList)
             {
                 Console.WriteLine("{0} {1} {2} {3}", p1.Title, p1.AvailableDate, p1.Type, p1.Date);
             }
-           Console.ReadLine();
+           Console.ReadLine();*/
             
         }
 

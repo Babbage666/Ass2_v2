@@ -17,28 +17,48 @@ namespace KIT206_RAP_Project.Control
     public class ResearcherController
     {
 
-        
-        public void LoadResearchers()
+        List<Researcher> ResearcherList=new List<Researcher>();
+        public ResearcherController()
         {
+                  ResearcherList = LoadResearchers();
+        }
 
-            
-            ERDAdapter Adapter1 = new ERDAdapter();
-            List<Researcher> ResearcherList2 = new List<Researcher>();
-            ResearcherList2 = Adapter1.fetchBasicResearcherDetails();
-            foreach(Researcher r1 in ResearcherList2)
+
+        public void Display()
+        {
+            foreach(Researcher r1 in ResearcherList)
             {
                 Console.WriteLine("{0}  {1}   {2}", r1.Id, r1.GivenName, r1.FamilyName);
             }
             Console.WriteLine("Press a key...");
             Console.ReadKey();
+        }
 
+        public void DisplayDetails(Researcher res1)
+        {
+            Console.WriteLine(res1.Id);
+            Console.WriteLine(res1.FamilyName);
+            Console.WriteLine(res1.GivenName);
+            Console.WriteLine(res1.Title);
+            Console.WriteLine(res1.Campus);
+            Console.WriteLine(res1.School);
+            Console.WriteLine(res1.Email);
+            Console.WriteLine(res1.PhotoURL);
+        }
+
+        public List<Researcher> LoadResearchers()
+        { 
+            
+            ERDAdapter Adapter1 = new ERDAdapter();
+            List<Researcher> tempList = new List<Researcher>();
+            tempList = Adapter1.fetchBasicResearcherDetails();
+
+            return tempList;
 
         }
 
         public void FilterByLevel(Research.EmploymentLevel level)
         {
-              
-
             return;
         }
 
@@ -51,18 +71,6 @@ namespace KIT206_RAP_Project.Control
         {
             ERDAdapter Adapter1 = new ERDAdapter();
             Researcher res1 = Adapter1.fullResearcherDetails(IDnum);
-            Console.WriteLine(res1.Id);
-            Console.WriteLine(res1.FamilyName);
-            Console.WriteLine(res1.GivenName);
-            Console.WriteLine(res1.Title);
-            Console.WriteLine(res1.Campus);
-            Console.WriteLine(res1.School);
-            Console.WriteLine(res1.Email);
-            Console.WriteLine(res1.PhotoURL);
-           
-            Console.WriteLine("Press a key...");
-            Console.ReadKey(); 
-
             
         }
 

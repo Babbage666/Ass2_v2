@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace KIT206_RAP_Project.Research
 {
-   
+    public enum EmploymentLevel  
+    {
+        Student,
+        A,
+        B,
+        C,
+        D,
+        E
+    };
 
     public class Researcher
     {
@@ -146,10 +154,63 @@ namespace KIT206_RAP_Project.Research
             }
         }
 
+        /*
+        public EmploymentLevel level
+        {
+            get
+            {
+                return level;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    level = value;
+                }
+            }
+        }
+        */
 
-       
+        private DateTime startdate; 
 
-        public Position GetCurrentJob()
+        public DateTime StartDate
+        {
+            get
+            {
+                return startdate;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    startdate = value;
+                }
+            }
+        }
+
+        private DateTime enddate; 
+
+        public DateTime EndDate
+        {
+            get
+            {
+                return enddate;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    enddate = value;
+                }
+            }
+        }
+
+        public string ToTitle(EmploymentLevel level)
+        {
+            return null;
+        }
+
+        public string GetCurrentJob()
         {
             return null;
         }
@@ -164,7 +225,7 @@ namespace KIT206_RAP_Project.Research
             return new DateTime(1943, 04, 01);
         }
 
-        public Position GetEarliestJob()
+        public string GetEarliestJob()
         {
             return null;
         }
@@ -183,7 +244,6 @@ namespace KIT206_RAP_Project.Research
         {
             return 0;
         }
-
 
     }
 }
