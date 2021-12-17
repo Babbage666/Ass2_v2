@@ -28,7 +28,7 @@ namespace KIT206_RAP_Project
             pubsList=PC.LoadPublicationsForID(123460);
             foreach(Publication p1 in pubsList)
             {
-                Console.WriteLine("{0}", p1.Title);
+                Console.WriteLine("{0} {1} {2} {3}", p1.Title, p1.AvailableDate, p1.Type, p1.Date);
             }
            Console.ReadLine();
             

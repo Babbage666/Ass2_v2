@@ -129,7 +129,7 @@ namespace KIT206_RAP_Project.Database
                 {
 
                     TestPubList.Add(new Publication
-                        {Title = rdr.GetString(0)});//
+                        {Title = rdr.GetString(0), Date=rdr.GetInt32(1) , Type=Publication.ParseEnum<Publication.OutputType>(rdr.GetString(2)),  AvailableDate=rdr.GetDateTime(3)});//
                     
                                                     //{Title = rdr.GetString(0), Year=rdr.GetDateTime(1), Type=Publication.ParseEnum<Publication.OutputType>(rdr.GetString(2)),AvailableDate=rdr.GetString(4)});                                                                                                                                         
                 }

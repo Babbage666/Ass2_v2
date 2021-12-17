@@ -70,8 +70,8 @@ namespace KIT206_RAP_Project.Research
             }
         }
 
-        private DateTime date;
-        public DateTime Date
+        private int date;
+        public int Date
         {
             get
             {
