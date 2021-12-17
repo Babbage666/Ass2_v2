@@ -116,7 +116,9 @@ namespace KIT206_RAP_Project.Database
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=?id", conn);
+                //MySqlCommand cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=?id", conn);
+
+                MySqlCommand cmd = new MySqlCommand("select title, year, type, available from publication as pub, researcher_publication as respub where pub.doi = respub.doi and researcher_id=?id", conn);
                 cmd.Parameters.AddWithValue("id", Id);
 
                 // 
@@ -127,9 +129,9 @@ namespace KIT206_RAP_Project.Database
                 {
 
                     TestPubList.Add(new Publication
-                        {DOI = rdr.GetString(0)});//
+                        {Title = rdr.GetString(0)});//
                     
-                                                                                                                                                                                          
+                                                    //{Title = rdr.GetString(0), Year=rdr.GetDateTime(1), Type=Publication.ParseEnum<Publication.OutputType>(rdr.GetString(2)),AvailableDate=rdr.GetString(4)});                                                                                                                                         
                 }
             }
             finally
