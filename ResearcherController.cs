@@ -71,6 +71,7 @@ namespace KIT206_RAP_Project.Control
         {
             ERDAdapter Adapter1 = new ERDAdapter();
             Researcher res1 = Adapter1.fullResearcherDetails(IDnum);
+            DisplayDetails(res1);
             
         }
 

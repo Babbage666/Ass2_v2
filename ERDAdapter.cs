@@ -55,13 +55,28 @@ namespace KIT206_RAP_Project.Database
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select id, given_name, family_name from researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("select id, given_name, family_name, level from researcher", conn);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
-                    ResearcherList.Add(new Researcher { GivenName = rdr.GetString(1), FamilyName=rdr.GetString(2), Id = rdr.GetInt32(0)});
+                    Staff r = new Staff();
+                    r.GivenName = rdr.GetString(1);
+                    r.FamilyName = rdr.GetString(2);
+                    r.Id = rdr.GetInt32(0);
+                    try
+                    {
+                        r.Level = ERDAdapter.ParseEnum<EmploymentLevel>(rdr.GetString(3));
+                    }catch (Exception e)
+                    {
+                        r.Level = EmploymentLevel.Student;
+                        Student r_student=new Student();
+                        ResearcherList.Add(r_student);
+                    }
+                   ResearcherList.Add(r);
+                   //ResearcherList.Add(new Researcher { GivenName = rdr.GetString(1), FamilyName=rdr.GetString(2), Id = rdr.GetInt32(0), level = ParseEnum<EmploymentLevel>(rdr.GetString(3)))};
                    
+
                 }
             }
             finally

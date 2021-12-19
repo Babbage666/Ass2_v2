@@ -27,7 +27,7 @@ namespace KIT206_RAP_Project
 
             Console.ReadLine();
             //R_Cont.LoadResearchers();
-            //R_Cont.LoadResearcherDetails(123460);
+            R_Cont.LoadResearcherDetails(123460);
 
             /*PublicationsController PC=new PublicationsController();
             List<Research.Publication> pubsList = new List<Research.Publication>();
