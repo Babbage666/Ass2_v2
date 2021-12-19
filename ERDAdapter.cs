@@ -52,11 +52,12 @@ namespace KIT206_RAP_Project.Database
            
             List<Researcher> ResearcherList = new List<Researcher>();
             MySqlDataReader rdr = null;
+            
 
             try
             {
                 conn.Open();
-
+                
                 MySqlCommand cmd = new MySqlCommand("select id, given_name, family_name, level from researcher", conn);
                 rdr = cmd.ExecuteReader();
 
@@ -72,16 +73,25 @@ namespace KIT206_RAP_Project.Database
                     try
                     {
                         r.Level = ERDAdapter.ParseEnum<EmploymentLevel>(rdr.GetString(3));
+                        
 
                     }catch (Exception e)
                     // Note: this works because in the DB, student level is NULL.
                     {
-                       
-                        r.Level = EmploymentLevel.Student;
                         Student r_student=new Student();
+                        r_student.Level = EmploymentLevel.Student;
+                        r_student.GivenName=rdr.GetString(1);
+                        r_student.FamilyName = rdr.GetString(2);
+                        r_student.Id = rdr.GetInt32(0);
                         ResearcherList.Add(r_student);
                     }
-                   ResearcherList.Add(r);
+
+                    if (r.Level != EmploymentLevel.Student)
+                    {
+                        r.Level=ERDAdapter.ParseEnum<EmploymentLevel>(rdr.GetString(3));
+                        ResearcherList.Add(r);
+                    }
+                   
                    
                    
 
