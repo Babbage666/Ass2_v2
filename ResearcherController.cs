@@ -76,8 +76,6 @@ namespace KIT206_RAP_Project.Control
             Console.WriteLine("waiting..");
             Console.ReadKey();
            
-            
-            
         }
 
        

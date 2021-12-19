@@ -19,6 +19,7 @@ namespace KIT206_RAP_Project
            
             // Display the basic Researcher Details:
             ResearcherController R_Cont = new ResearcherController();
+            PublicationsController P_Cont=new PublicationsController();
             R_Cont.Display();
 
             // Iterate the list and display the full Researcher Details:
@@ -26,7 +27,28 @@ namespace KIT206_RAP_Project
             foreach (int idnum in id_numbers)
             {
                 R_Cont.LoadResearcherDetails(idnum);
+                List<Research.Publication> publ_list=P_Cont.LoadPublicationsForID(idnum);
+                foreach (Publication p in publ_list)
+                {
+                    Console.WriteLine("{0}",p.Title);
+                    Console.ReadKey();
+
+                }
+
             }
+
+            /*PublicationsController P_Cont=new PublicationsController();
+            foreach (int idnum in id_numbers)
+            {
+                List<Research.Publication> publ_list=P_Cont.LoadPublicationsForID(idnum);
+                foreach (Publication p in publ_list)
+                {
+                    Console.WriteLine("{0}",p.Title);
+                    Console.ReadKey();
+
+                }
+
+            }*/
             
            
           
