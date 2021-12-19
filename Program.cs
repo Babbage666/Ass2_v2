@@ -37,21 +37,8 @@ namespace KIT206_RAP_Project
 
             }
 
-            /*PublicationsController P_Cont=new PublicationsController();
-            foreach (int idnum in id_numbers)
-            {
-                List<Research.Publication> publ_list=P_Cont.LoadPublicationsForID(idnum);
-                foreach (Publication p in publ_list)
-                {
-                    Console.WriteLine("{0}",p.Title);
-                    Console.ReadKey();
+           // Test12345
 
-                }
-
-            }*/
-            
-           
-          
             
         }
 
