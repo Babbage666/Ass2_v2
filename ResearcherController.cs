@@ -28,7 +28,7 @@ namespace KIT206_RAP_Project.Control
         {
             foreach(Researcher r1 in ResearcherList)
             {
-                Console.WriteLine("{0}  {1}   {2}", r1.Id, r1.GivenName, r1.FamilyName);
+                Console.WriteLine("{0}  {1}   {2}   {3}", r1.Id, r1.GivenName, r1.FamilyName, r1.Level);
             }
             Console.WriteLine("Press a key...");
             Console.ReadKey();

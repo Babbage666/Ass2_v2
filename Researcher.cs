@@ -165,7 +165,7 @@ namespace KIT206_RAP_Project.Research
             {
                
                 
-                    level = value;
+                level = value;
                 
             }
         }

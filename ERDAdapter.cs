@@ -38,6 +38,8 @@ namespace KIT206_RAP_Project.Database
                     return "Associate Professor";
                 case EmploymentLevel.E:
                     return "Professor";
+                case EmploymentLevel.Student:
+                    return "Student";
                 default:
                     return "LEVEL_NOT_FOUND";
             }
@@ -60,21 +62,26 @@ namespace KIT206_RAP_Project.Database
 
                 while (rdr.Read())
                 {
+
+                    // Add the Researchers into ResearcherList as either Staff or Student:
                     Staff r = new Staff();
                     r.GivenName = rdr.GetString(1);
                     r.FamilyName = rdr.GetString(2);
                     r.Id = rdr.GetInt32(0);
+                   
                     try
                     {
                         r.Level = ERDAdapter.ParseEnum<EmploymentLevel>(rdr.GetString(3));
+
                     }catch (Exception e)
+                    // Note: this works because in the DB, student level is NULL.
                     {
                         r.Level = EmploymentLevel.Student;
                         Student r_student=new Student();
                         ResearcherList.Add(r_student);
                     }
                    ResearcherList.Add(r);
-                   //ResearcherList.Add(new Researcher { GivenName = rdr.GetString(1), FamilyName=rdr.GetString(2), Id = rdr.GetInt32(0), level = ParseEnum<EmploymentLevel>(rdr.GetString(3)))};
+                   
                    
 
                 }

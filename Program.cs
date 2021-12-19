@@ -21,11 +21,7 @@ namespace KIT206_RAP_Project
             ResearcherController R_Cont = new ResearcherController();
             R_Cont.Display();
 
-            string resID;
-            resID = Console.ReadLine();
-            Console.Write(resID);
-
-            Console.ReadLine();
+            
             //R_Cont.LoadResearchers();
             R_Cont.LoadResearcherDetails(123460);
 
