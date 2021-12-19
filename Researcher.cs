@@ -154,8 +154,8 @@ namespace KIT206_RAP_Project.Research
             }
         }
 
-        /*
-        public EmploymentLevel level
+        private EmploymentLevel level;
+        public EmploymentLevel Level
         {
             get
             {
@@ -163,10 +163,10 @@ namespace KIT206_RAP_Project.Research
             }
             set
             {
-                if (value != null)
-                {
+               
+                
                     level = value;
-                }
+                
             }
         }
         */
