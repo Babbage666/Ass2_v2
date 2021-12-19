@@ -17,19 +17,19 @@ namespace KIT206_RAP_Project
         public static void Main(string[] args)
         {
            
-
+            // Display the basic Researcher Details:
             ResearcherController R_Cont = new ResearcherController();
             R_Cont.Display();
-            R_Cont.LoadResearcherDetails(123460);
 
-            /*PublicationsController PC=new PublicationsController();
-            List<Research.Publication> pubsList = new List<Research.Publication>();
-            pubsList=PC.LoadPublicationsForID(123460);
-            foreach(Publication p1 in pubsList)
+            // Iterate the list and display the full Researcher Details:
+            int[] id_numbers=new int[] {123460, 123461, 123462, 123463, 123464, 123465, 123466, 123467, 123468, 123469};
+            foreach (int idnum in id_numbers)
             {
-                Console.WriteLine("{0} {1} {2} {3}", p1.Title, p1.AvailableDate, p1.Type, p1.Date);
+                R_Cont.LoadResearcherDetails(idnum);
             }
-           Console.ReadLine();*/
+            
+           
+          
             
         }
 

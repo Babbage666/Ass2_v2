@@ -65,6 +65,7 @@ namespace KIT206_RAP_Project.Database
                 {
 
                     // Add the Researchers into ResearcherList as either Staff or Student:
+                    // Default is Staff:
                     Staff r = new Staff();
                     r.GivenName = rdr.GetString(1);
                     r.FamilyName = rdr.GetString(2);
@@ -77,6 +78,7 @@ namespace KIT206_RAP_Project.Database
 
                     }catch (Exception e)
                     // Note: this works because in the DB, student level is NULL.
+                    // So if we get the null exception, make the researcher a Student:
                     {
                         Student r_student=new Student();
                         r_student.Level = EmploymentLevel.Student;
@@ -123,7 +125,7 @@ namespace KIT206_RAP_Project.Database
 
         public Research.Researcher fullResearcherDetails(int id_num)
         {
-            Researcher r = new Researcher();
+            //Researcher r = new Researcher();
             MySqlDataReader rdr = null;
             try
             {
@@ -135,16 +137,60 @@ namespace KIT206_RAP_Project.Database
 
                 while (rdr.Read())
                 {
-                    r.Id=rdr.GetInt32(0);
-                    r.GivenName = rdr.GetString(1);
+
+                    Staff r = new Staff();
+                    /*r.GivenName = rdr.GetString(1);
                     r.FamilyName = rdr.GetString(2);
-                    r.Title = rdr.GetString(3);
-                    r.School = rdr.GetString(4);
-                    r.Campus = rdr.GetString(5);
-                    r.Email = rdr.GetString(6);
-                    r.PhotoURL = rdr.GetString(7);
-                    r.UtasStart=rdr.GetDateTime(11);
-                    r.CurrentStart=rdr.GetDateTime(12);
+                    r.Id = rdr.GetInt32(0);*/
+                   
+                    try
+                    {
+                        r.Level = ERDAdapter.ParseEnum<EmploymentLevel>(rdr.GetString(3));
+                        
+
+                    }catch (Exception e)
+                    // Note: this works because in the DB, student level is NULL.
+                    // So if we get the null exception, make the researcher a Student:
+                    {
+                        Student r_student=new Student();
+                        r_student.Level = EmploymentLevel.Student;
+                        r_student.GivenName=rdr.GetString(1);
+                        r_student.FamilyName = rdr.GetString(2);
+                        r_student.Id = rdr.GetInt32(0);
+                        r_student.Id=rdr.GetInt32(0);
+                        r_student.GivenName = rdr.GetString(1);
+                        r_student.FamilyName = rdr.GetString(2);
+                        r_student.Title = rdr.GetString(4);
+                        r_student.School = rdr.GetString(5);
+                        r_student.Campus = rdr.GetString(6);
+                        r_student.Email = rdr.GetString(7);
+                        r_student.PhotoURL = rdr.GetString(8);
+                        r_student.UtasStart=rdr.GetDateTime(11);
+                        r_student.CurrentStart=rdr.GetDateTime(12);
+                        r_student.Degree=rdr.GetString(9);
+                        r_student.SupervisorID=rdr.GetString(10);
+                        
+                        return r_student;
+                    }
+
+                    if (r.Level != EmploymentLevel.Student)
+                    {
+                         r.Id=rdr.GetInt32(0);
+                         r.GivenName = rdr.GetString(1);
+                         r.FamilyName = rdr.GetString(2);
+                         r.Title = rdr.GetString(4);
+                         r.School = rdr.GetString(5);
+                         r.Campus = rdr.GetString(6);
+                         r.Email = rdr.GetString(7);
+                         r.PhotoURL = rdr.GetString(8);
+                         r.UtasStart=rdr.GetDateTime(11);
+                         r.CurrentStart=rdr.GetDateTime(12);
+                         r.Level=ERDAdapter.ParseEnum<EmploymentLevel>(rdr.GetString(3));
+                         return r;
+                    }
+                   
+                   
+                   
 
 
                 }
@@ -160,7 +206,7 @@ namespace KIT206_RAP_Project.Database
                     conn.Close();
                 }
             }
-            return r;
+            return null;
         }
 
         public List<Research.Publication> LoadPublications(int Id)

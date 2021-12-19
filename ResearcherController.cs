@@ -69,17 +69,13 @@ namespace KIT206_RAP_Project.Control
 
         public void LoadResearcherDetails(int IDnum)
         {
-            Console.WriteLine("ID" + IDnum);
-            int listLength=ResearcherList.Count();
-            Console.WriteLine(listLength);
+            ERDAdapter ad1=new ERDAdapter();
+            Researcher r2=ad1.fullResearcherDetails(IDnum);
+            DisplayDetails(r2);
+          
             Console.WriteLine("waiting..");
             Console.ReadKey();
-            foreach(Researcher rr in ResearcherList)
-            {
-                Console.WriteLine(rr.FamilyName);
-            }
-            Console.WriteLine("waiting..");
-            Console.ReadKey();
+           
             
             
         }
