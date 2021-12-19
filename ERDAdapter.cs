@@ -76,6 +76,7 @@ namespace KIT206_RAP_Project.Database
                     }catch (Exception e)
                     // Note: this works because in the DB, student level is NULL.
                     {
+                       
                         r.Level = EmploymentLevel.Student;
                         Student r_student=new Student();
                         ResearcherList.Add(r_student);
@@ -118,7 +119,7 @@ namespace KIT206_RAP_Project.Database
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select * from researcher where id=?id_num", conn);
+                MySqlCommand cmd = new MySqlCommand("select id, given_name, family_name, level, title, unit, campus, email, photo, degree, supervisor_id, utas_start, current_start from researcher where id=?id_num", conn);
                 cmd.Parameters.AddWithValue("id_num",id_num);
                 rdr = cmd.ExecuteReader();
 
@@ -132,6 +133,8 @@ namespace KIT206_RAP_Project.Database
                     r.Campus = rdr.GetString(5);
                     r.Email = rdr.GetString(6);
                     r.PhotoURL = rdr.GetString(7);
+                    r.UtasStart=rdr.GetDateTime(11);
+                    r.CurrentStart=rdr.GetDateTime(12);
 
 
                 }

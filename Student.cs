@@ -27,5 +27,22 @@ namespace KIT206_RAP_Project.Research
             }
         }
 
+        private string supervisorID; 
+
+        public string SupervisorID
+        {
+            get
+            {
+                return supervisorID;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    supervisorID = value;
+                }
+            }
+        }
+
     }
 }

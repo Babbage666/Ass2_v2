@@ -206,6 +206,40 @@ namespace KIT206_RAP_Project.Research
             }
         }
 
+        private DateTime utasstart; 
+
+        public DateTime UtasStart
+        {
+            get
+            {
+                return utasstart;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    utasstart = value;
+                }
+            }
+        }
+
+        private DateTime currentstart; 
+
+        public DateTime CurrentStart
+        {
+            get
+            {
+                return currentstart;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    currentstart = value;
+                }
+            }
+        }
+
         public string ToTitle(EmploymentLevel level)
         {
             return null;
