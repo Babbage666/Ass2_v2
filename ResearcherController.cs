@@ -114,7 +114,7 @@ namespace KIT206_RAP_Project.Control
             {
                 double threeYrAvg = P_Cont2.calc3yrAvg(publ_list);
                 double staff_perf = r2.performance(r2.Level,threeYrAvg);
-                Console.WriteLine("Performance for this staff member:" + staff_perf);
+                Console.WriteLine("Performance for this staff member:" +  staff_perf.ToString("N1") + "%");
 
             }
             Console.WriteLine("\nPublications of Researcher ID: {0} \n", IDnum);
