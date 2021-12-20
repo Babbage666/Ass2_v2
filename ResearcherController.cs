@@ -31,8 +31,6 @@ namespace KIT206_RAP_Project.Control
             {
                 Console.WriteLine("{0}  {1}   {2}   {3}", r.Id, r.GivenName, r.FamilyName, r.Level);
             }
-            Console.WriteLine("Press a key...");
-            Console.ReadKey();
         }
 
         public void DisplayFilteredList()
@@ -41,8 +39,6 @@ namespace KIT206_RAP_Project.Control
             {
                 Console.WriteLine("{0}  {1}   {2}   {3}", r.Id, r.GivenName, r.FamilyName, r.Level);
             }
-            Console.WriteLine("Press a key...");
-            Console.ReadKey();
         }
 
         public void DisplayDetails(Researcher res1)
@@ -55,6 +51,8 @@ namespace KIT206_RAP_Project.Control
             Console.WriteLine(res1.School);
             Console.WriteLine(res1.Email);
             Console.WriteLine(res1.PhotoURL);
+            Console.WriteLine(res1.ToTitle(res1.Level));
+            Console.WriteLine("Began: {0}", res1.CurrentStart);
         }
 
         public List<Researcher> LoadResearchers()
@@ -65,7 +63,6 @@ namespace KIT206_RAP_Project.Control
             tempList = Adapter1.fetchBasicResearcherDetails();
 
             return tempList;
-
         }
 
         public void FilterByLevel(Research.EmploymentLevel level)
@@ -100,7 +97,6 @@ namespace KIT206_RAP_Project.Control
             ERDAdapter ad1=new ERDAdapter();
             Researcher r2=ad1.fullResearcherDetails(IDnum);
             DisplayDetails(r2);
-           
         }
 
        

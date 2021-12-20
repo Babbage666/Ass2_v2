@@ -242,33 +242,24 @@ namespace KIT206_RAP_Project.Research
 
         public string ToTitle(EmploymentLevel level)
         {
-            return null;
+            switch (level) {
+                case EmploymentLevel.A:
+                    return "Postdoc";
+                case EmploymentLevel.B:
+                    return "Lecturer";
+                case EmploymentLevel.C:
+                    return "Senior Lecturer";
+                case EmploymentLevel.D:
+                    return "Associate Professor";
+                case EmploymentLevel.E:
+                    return "Professor";
+                case EmploymentLevel.Student:
+                    return "Student";
+                default:
+                    return "LEVEL_NOT_FOUND";
+            }
         }
 
-        public string GetCurrentJob()
-        {
-            return null;
-        }
-
-        public string CurrentJobTitle()
-        {
-            return null;
-        }
-
-        public DateTime CurrentJobStart()
-        {
-            return new DateTime(1943, 04, 01);
-        }
-
-        public string GetEarliestJob()
-        {
-            return null;
-        }
-
-        public DateTime EarliestStart()
-        {
-            return new DateTime(1943, 04, 01);
-        }
 
         public float Tenure()
         {

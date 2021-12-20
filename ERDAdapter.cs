@@ -26,25 +26,6 @@ namespace KIT206_RAP_Project.Database
            return (T)Enum.Parse(typeof(T), value.Replace(" ","_"));
         }
 
-        public string GetTitleFromLevel(EmploymentLevel level) {
-            switch (level) {
-                case EmploymentLevel.A:
-                    return "Postdoc";
-                case EmploymentLevel.B:
-                    return "Lecturer";
-                case EmploymentLevel.C:
-                    return "Senior Lecturer";
-                case EmploymentLevel.D:
-                    return "Associate Professor";
-                case EmploymentLevel.E:
-                    return "Professor";
-                case EmploymentLevel.Student:
-                    return "Student";
-                default:
-                    return "LEVEL_NOT_FOUND";
-            }
-        }
-
 
         public List<Research.Researcher> fetchBasicResearcherDetails()
         {
