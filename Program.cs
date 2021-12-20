@@ -19,7 +19,7 @@ namespace KIT206_RAP_Project
            
             // Display the basic Researcher Details:
             ResearcherController R_Cont = new ResearcherController();
-            PublicationsController P_Cont=new PublicationsController();
+            PublicationsController P_Cont=new PublicationsController(); // Don't need this now???
 
             bool quit = false;
 
@@ -78,13 +78,13 @@ namespace KIT206_RAP_Project
                         int ID = Int32.Parse(Console.ReadLine());
                         Console.WriteLine("Details of Researcher ID: {0} \n", ID);
                         R_Cont.LoadResearcherDetails(ID);
-                        List<Research.Publication> publ_list=P_Cont.LoadPublicationsForID(ID);
+                        /*List<Research.Publication> publ_list=P_Cont.LoadPublicationsForID(ID);
                         int threeYrAvg = P_Cont.calc3yrAvg(publ_list);
                         Console.WriteLine("\nPublications of Researcher ID: {0} \n", ID);
                         foreach (Publication p in publ_list)
                         {
                             Console.WriteLine("{0}",p.Title);
-                        }
+                        }*/
                         break;
                     case "0":
                         quit = true;
@@ -94,23 +94,6 @@ namespace KIT206_RAP_Project
                         break;
                 }
             }  
-
-            // Iterate the list and display the full Researcher Details:
-            /*int[] id_numbers=new int[] {123460, 123461, 123462, 123463, 123464, 123465, 123466, 123467, 123468, 123469};
-            foreach (int idnum in id_numbers)
-            {
-                R_Cont.LoadResearcherDetails(idnum);
-                List<Research.Publication> publ_list=P_Cont.LoadPublicationsForID(idnum);
-                foreach (Publication p in publ_list)
-                {
-                    Console.WriteLine("{0}",p.Title);
-                    Console.ReadKey();
-
-                }
-
-            }
-            */
-           // Test12345
 
             
         }
