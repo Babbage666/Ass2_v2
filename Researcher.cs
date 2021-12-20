@@ -260,7 +260,7 @@ namespace KIT206_RAP_Project.Research
             }
         }
 
-        public double performance(EmploymentLevel lvl, double threeYavg)
+        /*public double performance(EmploymentLevel lvl, double threeYavg)
         {
             double expected;
             if (lvl==EmploymentLevel.A)
@@ -284,7 +284,7 @@ namespace KIT206_RAP_Project.Research
             }
 
             return (threeYavg/expected)*100;
-        }
+        }*/
 
 
         public float Tenure()

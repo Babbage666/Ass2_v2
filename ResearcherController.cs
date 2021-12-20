@@ -112,8 +112,8 @@ namespace KIT206_RAP_Project.Control
             DisplayDetails(r2);
             if (r2.Level != EmploymentLevel.Student)
             {
-                double threeYrAvg = P_Cont2.calc3yrAvg(publ_list);
-                double staff_perf = r2.performance(r2.Level,threeYrAvg);
+                double threeYrAvg = ((Staff)r2).calc3yrAvg(publ_list);
+                double staff_perf = ((Staff)r2).performance(r2.Level,threeYrAvg);
                 Console.WriteLine("Performance for this staff member:" +  staff_perf.ToString("N1") + "%");
 
             }
