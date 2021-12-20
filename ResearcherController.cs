@@ -18,6 +18,7 @@ namespace KIT206_RAP_Project.Control
     {
 
         List<Researcher> ResearcherList=new List<Researcher>();
+        List<Researcher> filteredList = new List<Researcher>();
         public ResearcherController()
         {
                   ResearcherList = LoadResearchers();
@@ -26,9 +27,19 @@ namespace KIT206_RAP_Project.Control
 
         public void Display()
         {
-            foreach(Researcher r1 in ResearcherList)
+            foreach(Researcher r in ResearcherList)
             {
-                Console.WriteLine("{0}  {1}   {2}   {3}", r1.Id, r1.GivenName, r1.FamilyName, r1.Level);
+                Console.WriteLine("{0}  {1}   {2}   {3}", r.Id, r.GivenName, r.FamilyName, r.Level);
+            }
+            Console.WriteLine("Press a key...");
+            Console.ReadKey();
+        }
+
+        public void DisplayFilteredList()
+        {
+            foreach(Researcher r in filteredList)
+            {
+                Console.WriteLine("{0}  {1}   {2}   {3}", r.Id, r.GivenName, r.FamilyName, r.Level);
             }
             Console.WriteLine("Press a key...");
             Console.ReadKey();
@@ -59,11 +70,28 @@ namespace KIT206_RAP_Project.Control
 
         public void FilterByLevel(Research.EmploymentLevel level)
         {
+            filteredList.Clear();
+            foreach (Researcher r in ResearcherList)
+            {
+                if (r.Level == level)
+                {
+                    filteredList.Add(r);
+                }
+            }
             return;
         }
 
         public void FilterByName(string name)
         {
+            filteredList.Clear();
+            foreach (Researcher r in ResearcherList)
+            {
+                string fullName = r.GivenName + r.FamilyName;
+                if (fullName.IndexOf(name, StringComparison.OrdinalIgnoreCase) > -1)
+                {
+                    filteredList.Add(r);
+                }
+            }
             return;
         }
 
@@ -72,9 +100,6 @@ namespace KIT206_RAP_Project.Control
             ERDAdapter ad1=new ERDAdapter();
             Researcher r2=ad1.fullResearcherDetails(IDnum);
             DisplayDetails(r2);
-          
-            Console.WriteLine("waiting..");
-            Console.ReadKey();
            
         }
 
