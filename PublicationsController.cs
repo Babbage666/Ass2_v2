@@ -33,6 +33,22 @@ namespace KIT206_RAP_Project.Control
 
         }
 
+        public int calc3yrAvg(List<Research.Publication> inputList)
+        {
+           
+            DateTime thisday = DateTime.Today;
+            int thisyear = thisday.Year;
+            int count = 0;
+            foreach (Publication p in inputList)
+            {
+                if (thisyear - p.Date < 3)
+                    count = count + 1;
+
+            }
+            Console.WriteLine("Count is equl to:" + count);
+            return count;
+        }
+
 
     }
 }
