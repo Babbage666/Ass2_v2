@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,55 +19,109 @@ namespace KIT206_RAP_Project.Control
     public class ResearcherController
     {
 
-        
-        public void LoadResearchers()
+        List<Researcher> ResearcherList=new List<Researcher>();
+        List<Researcher> filteredList = new List<Researcher>();
+        public ResearcherController()
         {
+                  ResearcherList = LoadResearchers();
+        }
 
+
+        public void Display()
+        {
+            foreach(Researcher r in ResearcherList)
+            {
+                Console.WriteLine("{0}  {1}   {2}   {3}", r.Id, r.GivenName, r.FamilyName, r.Level);
+            }
+        }
+
+        public void DisplayFilteredList()
+        {
+            foreach(Researcher r in filteredList)
+            {
+                Console.WriteLine("{0}  {1}   {2}   {3}", r.Id, r.GivenName, r.FamilyName, r.Level);
+            }
+        }
+
+        public void DisplayDetails(Researcher res1)
+        {
+            Console.WriteLine("ID:"+res1.Id);
+            Console.WriteLine("Family Name:"+res1.FamilyName);
+            Console.WriteLine("Given Name:"+res1.GivenName);
+            Console.WriteLine("Title:"+res1.Title);
+            Console.WriteLine("Campus:"+res1.Campus);
+            Console.WriteLine("School:"+res1.School);
+            Console.WriteLine("Email:"+res1.Email);
+            Console.WriteLine("PhotoURL:"+res1.PhotoURL);
+            Console.WriteLine("Level:"+res1.ToTitle(res1.Level));
+            Console.WriteLine("Began: {0}", res1.CurrentStart);
+            if (res1.Level==EmploymentLevel.Student)
+            {
+                Console.WriteLine("Degree:" + ((Student)res1).Degree);
+                Console.WriteLine("Supervisor ID:" + ((Student)res1).SupervisorID);
+            }
+           
+
+           
+        }
+
+        public List<Researcher> LoadResearchers()
+        { 
             
             ERDAdapter Adapter1 = new ERDAdapter();
-            List<Researcher> ResearcherList2 = new List<Researcher>();
-            ResearcherList2 = Adapter1.fetchBasicResearcherDetails();
-            foreach(Researcher r1 in ResearcherList2)
-            {
-                Console.WriteLine("{0}  {1}   {2}", r1.Id, r1.GivenName, r1.FamilyName);
-            }
-            Console.WriteLine("Press a key...");
-            Console.ReadKey();
+            List<Researcher> tempList = new List<Researcher>();
+            tempList = Adapter1.fetchBasicResearcherDetails();
 
-
+            return tempList;
         }
 
         public void FilterByLevel(Research.EmploymentLevel level)
         {
-              
-
+            filteredList.Clear();
+            foreach (Researcher r in ResearcherList)
+            {
+                if (r.Level == level)
+                {
+                    filteredList.Add(r);
+                }
+            }
             return;
         }
 
         public void FilterByName(string name)
         {
+            filteredList.Clear();
+            foreach (Researcher r in ResearcherList)
+            {
+                string fullName = r.GivenName + r.FamilyName;
+                if (fullName.IndexOf(name, StringComparison.OrdinalIgnoreCase) > -1)
+                {
+                    filteredList.Add(r);
+                }
+            }
             return;
         }
 
         public void LoadResearcherDetails(int IDnum)
         {
-            ERDAdapter Adapter1 = new ERDAdapter();
-            Researcher res1 = Adapter1.fullResearcherDetails(IDnum);
-            Console.WriteLine(res1.Id);
-            Console.WriteLine(res1.FamilyName);
-            Console.WriteLine(res1.GivenName);
-            Console.WriteLine(res1.Title);
-            Console.WriteLine(res1.Campus);
-            Console.WriteLine(res1.School);
-            Console.WriteLine(res1.Email);
-            Console.WriteLine(res1.PhotoURL);
-           
-            Console.WriteLine("Press a key...");
-            Console.ReadKey(); 
+            ERDAdapter ad1=new ERDAdapter();
+            Researcher r2=ad1.fullResearcherDetails(IDnum);
+            PublicationsController P_Cont2 = new PublicationsController();
+            List<Research.Publication> publ_list = P_Cont2.LoadPublicationsForID(IDnum);
+            
+            DisplayDetails(r2);
+            if (r2.Level != EmploymentLevel.Student)
+            {
+                double threeYrAvg = P_Cont2.calc3yrAvg(publ_list);
+                double staff_perf = r2.performance(r2.Level,threeYrAvg);
+                Console.WriteLine("Performance for this staff member:" +  staff_perf.ToString("N1") + "%");
 
-            // Publications for this Researcher:
-            PublicationsController PC=new PublicationsController();
-            //PC.LoadPublicationsFor(res1);
+            }
+            Console.WriteLine("\nPublications of Researcher ID: {0} \n", IDnum);
+            foreach (Publication p in publ_list)
+            {
+                Console.WriteLine("{0}", p.Title);
+            }
         }
 
        

@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace KIT206_RAP_Project.Research
 {
-   
+    public enum EmploymentLevel  
+    {
+        Student,
+        A,
+        B,
+        C,
+        D,
+        E
+    };
 
     public class Researcher
     {
@@ -146,33 +154,138 @@ namespace KIT206_RAP_Project.Research
             }
         }
 
-
-       
-
-        public Position GetCurrentJob()
+        private EmploymentLevel level;
+        public EmploymentLevel Level
         {
-            return null;
+            get
+            {
+                return level;
+            }
+            set
+            {
+               
+                
+                level = value;
+                
+            }
+        }
+        
+
+
+        private DateTime startdate; 
+
+        public DateTime StartDate
+        {
+            get
+            {
+                return startdate;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    startdate = value;
+                }
+            }
         }
 
-        public string CurrentJobTitle()
+        private DateTime enddate; 
+
+        public DateTime EndDate
         {
-            return null;
+            get
+            {
+                return enddate;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    enddate = value;
+                }
+            }
         }
 
-        public DateTime CurrentJobStart()
+        private DateTime utasstart; 
+
+        public DateTime UtasStart
         {
-            return new DateTime(1943, 04, 01);
+            get
+            {
+                return utasstart;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    utasstart = value;
+                }
+            }
         }
 
-        public Position GetEarliestJob()
+        private DateTime currentstart; 
+
+        public DateTime CurrentStart
         {
-            return null;
+            get
+            {
+                return currentstart;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    currentstart = value;
+                }
+            }
         }
 
-        public DateTime EarliestStart()
+        public string ToTitle(EmploymentLevel level)
         {
-            return new DateTime(1943, 04, 01);
+            switch (level) {
+                case EmploymentLevel.A:
+                    return "Postdoc";
+                case EmploymentLevel.B:
+                    return "Lecturer";
+                case EmploymentLevel.C:
+                    return "Senior Lecturer";
+                case EmploymentLevel.D:
+                    return "Associate Professor";
+                case EmploymentLevel.E:
+                    return "Professor";
+                case EmploymentLevel.Student:
+                    return "Student";
+                default:
+                    return "LEVEL_NOT_FOUND";
+            }
         }
+
+        public double performance(EmploymentLevel lvl, double threeYavg)
+        {
+            double expected;
+            if (lvl==EmploymentLevel.A)
+            {
+                expected = 0.5;
+            }
+            else if (lvl==EmploymentLevel.B)
+            {
+                expected = 1;
+            }
+            else if (lvl==EmploymentLevel.C)
+            {
+                expected = 2;
+            } else if (lvl==EmploymentLevel.D)
+            {
+                expected = 3.2;
+            }   
+            else
+            {
+                expected = 4;
+            }
+
+            return (threeYavg/expected)*100;
+        }
+
 
         public float Tenure()
         {
@@ -183,7 +296,6 @@ namespace KIT206_RAP_Project.Research
         {
             return 0;
         }
-
 
     }
 }
