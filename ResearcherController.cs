@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,16 +45,23 @@ namespace KIT206_RAP_Project.Control
 
         public void DisplayDetails(Researcher res1)
         {
-            Console.WriteLine(res1.Id);
-            Console.WriteLine(res1.FamilyName);
-            Console.WriteLine(res1.GivenName);
-            Console.WriteLine(res1.Title);
-            Console.WriteLine(res1.Campus);
-            Console.WriteLine(res1.School);
-            Console.WriteLine(res1.Email);
-            Console.WriteLine(res1.PhotoURL);
-            Console.WriteLine(res1.ToTitle(res1.Level));
+            Console.WriteLine("ID:"+res1.Id);
+            Console.WriteLine("Family Name:"+res1.FamilyName);
+            Console.WriteLine("Given Name:"+res1.GivenName);
+            Console.WriteLine("Title:"+res1.Title);
+            Console.WriteLine("Campus:"+res1.Campus);
+            Console.WriteLine("School:"+res1.School);
+            Console.WriteLine("Email:"+res1.Email);
+            Console.WriteLine("PhotoURL:"+res1.PhotoURL);
+            Console.WriteLine("Level:"+res1.ToTitle(res1.Level));
             Console.WriteLine("Began: {0}", res1.CurrentStart);
+            if (res1.Level==EmploymentLevel.Student)
+            {
+                Console.WriteLine("Degree:" + ((Student)res1).Degree);
+                Console.WriteLine("Supervisor ID:" + ((Student)res1).SupervisorID);
+            }
+
+           
         }
 
         public List<Researcher> LoadResearchers()
