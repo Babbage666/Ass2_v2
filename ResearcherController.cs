@@ -69,6 +69,7 @@ namespace KIT206_RAP_Project.Control
             Console.WriteLine("Level:"+res1.ToTitle(res1.Level));
             Console.WriteLine("Began current role: {0}", res1.CurrentStart);
             Console.WriteLine("Tenure:" + (res1.Tenure()).ToString("N2") + " years");
+            Console.WriteLine("Total publications:" + res1.PublicationsCount());
             if (res1.Level==EmploymentLevel.Student)
             {
                 Console.WriteLine("Degree:" + ((Student)res1).Degree);
@@ -77,7 +78,7 @@ namespace KIT206_RAP_Project.Control
                 var superName = from rs in ResearcherList
                                     where rs.Id == superID
                                     select rs;
-                //Console.WriteLine("Supervisor Name:");
+                
                 superName.ToList().ForEach(a => Console.WriteLine("Supervisor Name: " + a.GivenName + " "+ a.FamilyName));
                
             }

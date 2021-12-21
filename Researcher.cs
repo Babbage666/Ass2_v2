@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KIT206_RAP_Project.Research;
+using KIT206_RAP_Project.Control;
+using KIT206_RAP_Project.Database;
 
 namespace KIT206_RAP_Project.Research
 {
@@ -277,7 +280,9 @@ namespace KIT206_RAP_Project.Research
 
         public int PublicationsCount()
         {
-            return 0;
+            PublicationsController P_Cont2 = new PublicationsController();
+            List<Publication> p=P_Cont2.LoadPublicationsForID(this.Id);
+            return p.Count;
         }
 
     }
