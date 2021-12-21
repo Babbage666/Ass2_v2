@@ -60,6 +60,13 @@ namespace KIT206_RAP_Project.Control
             {
                 Console.WriteLine("Degree:" + ((Student)res1).Degree);
                 Console.WriteLine("Supervisor ID:" + ((Student)res1).SupervisorID);
+                int superID = Int32.Parse(((Student)res1).SupervisorID);
+                var superName = from rs in ResearcherList
+                                    where rs.Id == superID
+                                    select rs;
+                Console.WriteLine("Supervisor Name:");
+                superName.ToList().ForEach(a => Console.WriteLine(a.GivenName));
+                superName.ToList().ForEach(a => Console.WriteLine(a.FamilyName));
             }
            
 

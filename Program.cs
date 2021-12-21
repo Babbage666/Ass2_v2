@@ -78,13 +78,7 @@ namespace KIT206_RAP_Project
                         int ID = Int32.Parse(Console.ReadLine());
                         Console.WriteLine("Details of Researcher ID: {0} \n", ID);
                         R_Cont.LoadResearcherDetails(ID);
-                        /*List<Research.Publication> publ_list=P_Cont.LoadPublicationsForID(ID);
-                        int threeYrAvg = P_Cont.calc3yrAvg(publ_list);
-                        Console.WriteLine("\nPublications of Researcher ID: {0} \n", ID);
-                        foreach (Publication p in publ_list)
-                        {
-                            Console.WriteLine("{0}",p.Title);
-                        }*/
+                       
                         break;
                     case "0":
                         quit = true;
