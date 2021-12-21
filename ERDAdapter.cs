@@ -106,7 +106,7 @@ namespace KIT206_RAP_Project.Database
 
         public Research.Researcher fullResearcherDetails(int id_num)
         {
-            //Researcher r = new Researcher();
+            
             MySqlDataReader rdr = null;
             try
             {
@@ -120,9 +120,7 @@ namespace KIT206_RAP_Project.Database
                 {
 
                     Staff r = new Staff();
-                    /*r.GivenName = rdr.GetString(1);
-                    r.FamilyName = rdr.GetString(2);
-                    r.Id = rdr.GetInt32(0);*/
+                    
                    
                     try
                     {
@@ -200,7 +198,7 @@ namespace KIT206_RAP_Project.Database
             {
                 conn.Open();
 
-                //MySqlCommand cmd = new MySqlCommand("select doi from researcher_publication where researcher_id=?id", conn);
+               
 
                 MySqlCommand cmd = new MySqlCommand("select title, year, type, available from publication as pub, researcher_publication as respub where pub.doi = respub.doi and researcher_id=?id", conn);
                 cmd.Parameters.AddWithValue("id", Id);
@@ -214,8 +212,7 @@ namespace KIT206_RAP_Project.Database
 
                     TestPubList.Add(new Publication
                         {Title = rdr.GetString(0), Date=rdr.GetInt32(1) , Type=Publication.ParseEnum<Publication.OutputType>(rdr.GetString(2)),  AvailableDate=rdr.GetDateTime(3)});//
-                        //, level = GetTitleFromLevel(ParseEnum<EmploymentLevel>(rdr.GetString(3))
-                                                    //{Title = rdr.GetString(0), Year=rdr.GetDateTime(1), Type=Publication.ParseEnum<Publication.OutputType>(rdr.GetString(2)),AvailableDate=rdr.GetString(4)});                                                                                                                                         
+                                                                                                                                                     
                 }
             }
             finally

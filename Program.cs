@@ -25,7 +25,7 @@ namespace KIT206_RAP_Project
 
             while (!quit)
             {
-                Console.WriteLine("Please Select an option: \n 1: Display List \n 2: Filter List by Employment Level \n 3. Filter List by name  \n 4: Display Details \n 5: Achievement Report \n 0: Quit");
+                Console.WriteLine("\nPlease Select an option: \n 1: Display List \n 2: Filter List by Employment Level \n 3. Filter List by name  \n 4: Display Details \n 5: Achievement Report \n 0: Quit");
                 string option = Console.ReadLine();
                 Console.WriteLine("{0} selected", option);
                 switch (option) 

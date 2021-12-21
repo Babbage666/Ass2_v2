@@ -218,11 +218,11 @@ namespace KIT206_RAP_Project.Control
             {
                 if (r.Level != EmploymentLevel.Student)
                 {
-                    //Console.WriteLine("Researcher:" + r.FamilyName);
+                    
                     r.Publications = P_Cont3.LoadPublicationsForID(r.Id);
                     double threeYAvg = ((Staff)r).calc3yrAvg(r.Publications);
                     double perf = ((Staff)r).performance(r.Level, threeYAvg);
-                    //Console.WriteLine("Performance:" + perf);
+                    
                     if (perf > minval && perf <= maxval)
                     { 
                         Console.WriteLine("Name:" + r.GivenName + " " + r.FamilyName);

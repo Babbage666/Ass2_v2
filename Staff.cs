@@ -23,7 +23,7 @@ namespace KIT206_RAP_Project.Research
                     count = count + 1;
 
             }
-            //Console.WriteLine("3 year publication average is:" + count / 3);
+           
             return (double)(count / 3);
         }
 
