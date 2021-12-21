@@ -16,8 +16,11 @@ namespace KIT206_RAP_Project.Research
         E
     };
 
+
+
     public class Researcher
     {
+        public List<Research.Publication> Publications { get; set; }
 
         private string givenname; 
 
