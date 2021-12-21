@@ -54,7 +54,8 @@ namespace KIT206_RAP_Project.Control
             Console.WriteLine("Email:"+res1.Email);
             Console.WriteLine("PhotoURL:"+res1.PhotoURL);
             Console.WriteLine("Level:"+res1.ToTitle(res1.Level));
-            Console.WriteLine("Began: {0}", res1.CurrentStart);
+            Console.WriteLine("Began current role: {0}", res1.CurrentStart);
+            Console.WriteLine("Tenure:" + (res1.Tenure()).ToString("N2") + " years");
             if (res1.Level==EmploymentLevel.Student)
             {
                 Console.WriteLine("Degree:" + ((Student)res1).Degree);
