@@ -77,8 +77,8 @@ namespace KIT206_RAP_Project.Control
                 var superName = from rs in ResearcherList
                                     where rs.Id == superID
                                     select rs;
-                Console.WriteLine("Supervisor Name:");
-                superName.ToList().ForEach(a => Console.WriteLine(a.GivenName + " "+ a.FamilyName));
+                //Console.WriteLine("Supervisor Name:");
+                superName.ToList().ForEach(a => Console.WriteLine("Supervisor Name: " + a.GivenName + " "+ a.FamilyName));
                
             }
            
