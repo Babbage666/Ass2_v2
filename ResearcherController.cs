@@ -65,8 +65,8 @@ namespace KIT206_RAP_Project.Control
                                     where rs.Id == superID
                                     select rs;
                 Console.WriteLine("Supervisor Name:");
-                superName.ToList().ForEach(a => Console.WriteLine(a.GivenName));
-                superName.ToList().ForEach(a => Console.WriteLine(a.FamilyName));
+                superName.ToList().ForEach(a => Console.WriteLine(a.GivenName + " "+ a.FamilyName));
+               
             }
            
 
