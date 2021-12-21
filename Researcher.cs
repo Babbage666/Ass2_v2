@@ -263,36 +263,16 @@ namespace KIT206_RAP_Project.Research
             }
         }
 
-        public double performance(EmploymentLevel lvl, double threeYavg)
+       
+
+
+        public double Tenure()
         {
-            double expected;
-            if (lvl==EmploymentLevel.A)
-            {
-                expected = 0.5;
-            }
-            else if (lvl==EmploymentLevel.B)
-            {
-                expected = 1;
-            }
-            else if (lvl==EmploymentLevel.C)
-            {
-                expected = 2;
-            } else if (lvl==EmploymentLevel.D)
-            {
-                expected = 3.2;
-            }   
-            else
-            {
-                expected = 4;
-            }
-
-            return (threeYavg/expected)*100;
-        }
-
-
-        public float Tenure()
-        {
-            return 0;
+            DateTime thisday = DateTime.Today;
+            TimeSpan t = thisday - UtasStart;
+            int t2 = t.Days;
+            double t3 = t2 / 365.25;
+            return t3;
         }
 
         public int PublicationsCount()

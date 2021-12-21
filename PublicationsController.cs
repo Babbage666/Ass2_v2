@@ -33,22 +33,7 @@ namespace KIT206_RAP_Project.Control
 
         }
 
-        // Should this method be in the Researcher class?
-        public double calc3yrAvg(List<Research.Publication> inputList)
-        {
-           
-            DateTime thisday = DateTime.Today;
-            int thisyear = thisday.Year;
-            int count = 0;
-            foreach (Publication p in inputList)
-            {
-                if (thisyear - p.Date < 3)
-                    count = count + 1;
-
-            }
-            Console.WriteLine("3 year publication average is:" + count/3);
-            return (double)(count/3);
-        }
+       
 
 
     }
