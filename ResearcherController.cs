@@ -26,6 +26,19 @@ namespace KIT206_RAP_Project.Control
                   ResearcherList = LoadResearchers();
         }
 
+        public Researcher Use (int id)
+        {
+            foreach (Researcher currentResearcher in ResearcherList)
+            {
+                if (currentResearcher.Id == id)
+                {
+                    return currentResearcher;
+                }
+            }
+
+            return null;
+        }
+
 
         public void Display()
         {
@@ -115,24 +128,53 @@ namespace KIT206_RAP_Project.Control
             ERDAdapter ad1=new ERDAdapter();
             Researcher r2=ad1.fullResearcherDetails(IDnum);
             PublicationsController P_Cont2 = new PublicationsController();
-            List<Research.Publication> publ_list = P_Cont2.LoadPublicationsForID(IDnum);
+            r2.Publications = P_Cont2.LoadPublicationsForID(IDnum);
             
             DisplayDetails(r2);
             if (r2.Level != EmploymentLevel.Student)
             {
                 double threeYrAvg = ((Staff)r2).calc3yrAvg(publ_list);
                 double staff_perf = ((Staff)r2).performance(r2.Level,threeYrAvg);
+
                 Console.WriteLine("Performance for this staff member:" +  staff_perf.ToString("N1") + "%");
 
             }
             Console.WriteLine("\nPublications of Researcher ID: {0} \n", IDnum);
-            foreach (Publication p in publ_list)
+            foreach (Publication p in r2.Publications)
             {
-                Console.WriteLine("{0}", p.Title);
+                Console.WriteLine("{0} : {1}", p.Date , p.Title);
+            }
+
+            Console.WriteLine("Would you like the Cumulative Count? (y)es or (n)o.");
+            string option = Console.ReadLine();
+            if (option == "y")
+            {
+                CumulativeCount(r2);
             }
         }
 
-       
+        public void CumulativeCount(Researcher r, int startYear = 2015, int endYear = 2021)
+        {
+            Console.WriteLine("Cumulative Count of Research by Year:\n");
+
+            for (int i = 0; i <= endYear-startYear; i++)
+            {
+                List<Publication> rPubs = r.Publications;
+                var counter =
+                    from pub in rPubs
+                    where pub.Date == startYear + i
+                    select pub;
+                int count = counter.Count();
+                //List<Publication> count = r.Publications.FindAll(delegate (Publication pub) { return pub.Date == startYear + i; });
+                //int yearCount = count.Count();
+                Console.WriteLine("Year: {0}           |  Count: {1}       ", startYear+i, count);
+            }
+
+            return;
+        }
+
+
+
 
 
     }
