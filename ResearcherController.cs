@@ -128,12 +128,12 @@ namespace KIT206_RAP_Project.Control
             ERDAdapter ad1=new ERDAdapter();
             Researcher r2=ad1.fullResearcherDetails(IDnum);
             PublicationsController P_Cont2 = new PublicationsController();
-            r2.Publications = P_Cont2.LoadPublicationsForID(IDnum);
+            r2.Publications=P_Cont2.LoadPublicationsForID(IDnum);
             
             DisplayDetails(r2);
             if (r2.Level != EmploymentLevel.Student)
             {
-                double threeYrAvg = ((Staff)r2).calc3yrAvg(publ_list);
+                double threeYrAvg = ((Staff)r2).calc3yrAvg(r2.Publications);
                 double staff_perf = ((Staff)r2).performance(r2.Level,threeYrAvg);
 
                 Console.WriteLine("Performance for this staff member:" +  staff_perf.ToString("N1") + "%");
