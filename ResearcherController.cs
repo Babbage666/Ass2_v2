@@ -175,17 +175,58 @@ namespace KIT206_RAP_Project.Control
 
         public void AchievementReport()
         {
+            double minval=0;
+            double maxval=70;
+            string category="";
+            
+            Console.WriteLine("Please Select a Performance option: \n 1:Poor \n 2:Below expectations \n 3:Meeting minimum  \n 4:Star performers \n 0: Quit");
+            string option = Console.ReadLine();
+            switch(option)
+            {
+                case "1":
+                    minval=-1;
+                    maxval=70;
+                    category="Poor";
+                    break;
+                case "2":
+                    minval=70;
+                    maxval=110;
+                    category="Below expectations";
+                    break;
+                case "3":
+                    minval=110;
+                    maxval=200;
+                    category="Meeting minimum";
+                    break;
+                case "4":
+                    minval=200;
+                    maxval=1000;
+                    category="Star Performer";
+                    break;
+                case "0":
+                    return;
+                    break;
+                default:
+                    Console.WriteLine("Not a valid option, please enter a valid option \n");
+                    break;
+            }
             PublicationsController P_Cont3 = new PublicationsController();
-            Console.WriteLine("\nAchievement Report\n");
+            Console.WriteLine("\nAchievement Report");
+            Console.WriteLine(category + " performance:\n");
             foreach (Researcher r in ResearcherList)
             {
                 if (r.Level != EmploymentLevel.Student)
                 {
+                    //Console.WriteLine("Researcher:" + r.FamilyName);
                     r.Publications = P_Cont3.LoadPublicationsForID(r.Id);
                     double threeYAvg = ((Staff)r).calc3yrAvg(r.Publications);
                     double perf = ((Staff)r).performance(r.Level, threeYAvg);
-                    Console.WriteLine("Name:" + r.GivenName + " " + r.FamilyName);
-                    Console.WriteLine("Performance Metric:" + perf + "\n");
+                    //Console.WriteLine("Performance:" + perf);
+                    if (perf > minval && perf <= maxval)
+                    { 
+                        Console.WriteLine("Name:" + r.GivenName + " " + r.FamilyName);
+                        Console.WriteLine("Performance Metric:" + perf + "\n");
+                    }
                 }
 
             }
