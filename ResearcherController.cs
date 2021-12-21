@@ -173,6 +173,24 @@ namespace KIT206_RAP_Project.Control
             return;
         }
 
+        public void AchievementReport()
+        {
+            PublicationsController P_Cont3 = new PublicationsController();
+            Console.WriteLine("\nAchievement Report\n");
+            foreach (Researcher r in ResearcherList)
+            {
+                if (r.Level != EmploymentLevel.Student)
+                {
+                    r.Publications = P_Cont3.LoadPublicationsForID(r.Id);
+                    double threeYAvg = ((Staff)r).calc3yrAvg(r.Publications);
+                    double perf = ((Staff)r).performance(r.Level, threeYAvg);
+                    Console.WriteLine("Name:" + r.GivenName + " " + r.FamilyName);
+                    Console.WriteLine("Performance Metric:" + perf + "\n");
+                }
+
+            }
+        }
+
 
 
 
