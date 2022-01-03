@@ -141,7 +141,9 @@ namespace KIT206_RAP_Project.Research
 
         public int Age()
         {
-            return 0;
+            DateTime today=DateTime.Today;
+            int timespan = (today - AvailableDate).Days;
+            return timespan;
         }
 
         public static T ParseEnum<T>(string value)
