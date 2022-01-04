@@ -200,7 +200,7 @@ namespace KIT206_RAP_Project.Database
 
                
 
-                MySqlCommand cmd = new MySqlCommand("select title, year, type, available from publication as pub, researcher_publication as respub where pub.doi = respub.doi and researcher_id=?id", conn);
+                MySqlCommand cmd = new MySqlCommand("select title, year, type, available, pub.doi from publication as pub, researcher_publication as respub where pub.doi = respub.doi and researcher_id=?id", conn);
                 cmd.Parameters.AddWithValue("id", Id);
 
                 // 
@@ -211,7 +211,7 @@ namespace KIT206_RAP_Project.Database
                 {
 
                     TestPubList.Add(new Publication
-                        {Title = rdr.GetString(0), Date=rdr.GetInt32(1) , Type=Publication.ParseEnum<Publication.OutputType>(rdr.GetString(2)),  AvailableDate=rdr.GetDateTime(3)});//
+                        { Title = rdr.GetString(0), Date=rdr.GetInt32(1) , Type=Publication.ParseEnum<Publication.OutputType>(rdr.GetString(2)),  AvailableDate=rdr.GetDateTime(3), DOI=rdr.GetString(4) });//
                                                                                                                                                      
                 }
             }
@@ -269,9 +269,61 @@ namespace KIT206_RAP_Project.Database
             return PublicationsList;
         }
         
-        public List<Research.Publication> completePublicationDetails(Publication p)
+        public Publication completePublicationDetails(string doiString)
         {
-            return null;
+            conn = GetConnection();
+            Publication p_out = new Publication();
+            Console.WriteLine("Entered the method.\n");
+            //Console.WriteLine("The Title is {0}", p.Title);
+            Console.WriteLine("The DOI is " + doiString);
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+                Console.WriteLine("Trying...");
+                //string searchstring = " select * from publication where publication.doi=" + doiString;
+                //Console.WriteLine("Searchstring is {0}", searchstring);
+                MySqlCommand cmd = new MySqlCommand("select * from publication where doi=?doi_string", conn);
+                //MySqlCommand cmd = new MySqlCommand(searchstring, conn);
+
+                cmd.Parameters.AddWithValue("doi_string", doiString);
+                rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    Console.WriteLine("rdr has rows");
+                }
+                while (rdr.Read())
+                {
+                    //p_out.DOI = rdr.GetString(1);
+                    //Console.WriteLine("p_out.DOI is:", p_out.DOI);
+                    p_out.Title = rdr.GetString(0);
+                    Console.WriteLine("p_out.Title is:", p_out.Title);
+                    /*p_out.Authors = rdr.GetString(3);
+                    p_out.Date = rdr.GetInt32(4);
+                    p_out.Type = Publication.ParseEnum<Publication.OutputType>(rdr.GetString(5));
+                    p_out.CiteAs = rdr.GetString(6);
+                    p_out.AvailableDate = rdr.GetDateTime(7);*/
+                    Console.WriteLine("Iterating...");
+                }
+
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+
+
+            return p_out;
+
         }
 
         public Publication fetchPublicationCounts(DateTime from, DateTime to)

@@ -143,10 +143,27 @@ namespace KIT206_RAP_Project.Control
             Console.WriteLine("\nPublications of Researcher ID: {0} \n", IDnum);
             foreach (Publication p in r2.Publications)
             {
-                Console.WriteLine("{0} : {1}", p.Date , p.Title);
+                Console.WriteLine("{0} : {1}", p.Date, p.Title);
             }
 
-            Console.WriteLine("Would you like the Cumulative Count? (y)es or (n)o.");
+            // Full details for a publication:
+            Console.WriteLine("Choose a publication to view full details: Choose 1 to {0}", r2.Publications.Count);
+            
+            int pub_selection = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("You selected: {0}", pub_selection);
+            Console.WriteLine("Its DOI is: {0}", (r2.Publications[pub_selection]).DOI);
+
+            Publication pub_selectionFull = ad1.completePublicationDetails((r2.Publications[pub_selection]).DOI);
+            /*Console.WriteLine("DOI: {0} \n", pub_selectionFull.DOI);
+            Console.WriteLine("Title: {0} \n", pub_selectionFull.Title);
+            Console.WriteLine("Authors: {0} \n", pub_selectionFull.Authors);
+            Console.WriteLine("Publication Year: {0} \n", pub_selectionFull.Date);
+            Console.WriteLine("Type: {0} \n", pub_selectionFull.Type);
+            Console.WriteLine("Citation: {0} \n", pub_selectionFull.CiteAs);
+            Console.WriteLine("Available Date: {0} \n", pub_selectionFull.AvailableDate);
+            Console.WriteLine("Age: {0}", pub_selectionFull.Age());*/
+
+            Console.WriteLine("\nWould you like the Cumulative Count? (y)es or (n)o.");
             string option = Console.ReadLine();
             if (option == "y")
             {
