@@ -390,7 +390,15 @@ namespace KIT206_RAP_Project.Database
 
                        Console.WriteLine("Position:" + ERDAdapter.ParseEnum<EmploymentLevel>(rdr.GetString(2)));
                        Console.WriteLine("Start:" + rdr.GetString(0));
-                       Console.WriteLine("End:"); // How do you deal with nulls???
+                      
+                       if (!rdr.IsDBNull(1))
+                        {
+                          Console.WriteLine("End:"+rdr.GetString(1));
+                        }
+                       else
+                       {
+                        Console.WriteLine("Still in that position.");
+                       }
                    
                 }
                     
