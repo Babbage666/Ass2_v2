@@ -160,18 +160,10 @@ namespace KIT206_RAP_Project.Control
                                  where publ.DOI == (r2.Publications[pub_selection]).DOI
                                  select publ;
 
-                //superName.ToList().ForEach(a => Console.WriteLine("Supervisor Name: " + a.GivenName + " "+ a.FamilyName));
+                
                 pub_selected.ToList().ForEach(a => Console.WriteLine("DOI: " + a.DOI + "\nTitle:"+ a.Title + "\nAuthors:"+a.Authors + "\nPublication Year:"+a.Date + "\nType:"+a.Type+"\nCitation:"+a.CiteAs+"\nAvailable:"+a.AvailableDate));
-
-                //Publication pub_selectionFull = ad1.completePublicationDetails((r2.Publications[pub_selection]).DOI);
-                /*Console.WriteLine("DOI: {0} \n", pub_selectionFull.DOI);
-                Console.WriteLine("Title: {0} \n", pub_selectionFull.Title);
-                Console.WriteLine("Authors: {0} \n", pub_selectionFull.Authors);
-                Console.WriteLine("Publication Year: {0} \n", pub_selectionFull.Date);
-                Console.WriteLine("Type: {0} \n", pub_selectionFull.Type);
-                Console.WriteLine("Citation: {0} \n", pub_selectionFull.CiteAs);
-                Console.WriteLine("Available Date: {0} \n", pub_selectionFull.AvailableDate);
-                Console.WriteLine("Age: {0}", pub_selectionFull.Age());*/
+                Console.WriteLine("Age is:"+(r2.Publications[pub_selection]).Age()+" days.\n");
+               
             }
 
 

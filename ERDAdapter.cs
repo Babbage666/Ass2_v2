@@ -199,7 +199,7 @@ namespace KIT206_RAP_Project.Database
                 conn.Open();
 
                
-
+                // This is a clunky way of doing it, but I don't have time to tighten up the code.
                 MySqlCommand cmd = new MySqlCommand("select pub.doi, title, authors,  year, type, cite_as, available from publication as pub, researcher_publication as respub where pub.doi = respub.doi and researcher_id=?id", conn);
                 cmd.Parameters.AddWithValue("id", Id);
 
