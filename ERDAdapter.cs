@@ -99,10 +99,7 @@ namespace KIT206_RAP_Project.Database
         }
 
        
-        public Research.Researcher completeResearcherDetails(Research.Researcher r)
-        {
-            return null;
-        }
+        
 
         public Research.Researcher fullResearcherDetails(int id_num)
         {
@@ -282,10 +279,9 @@ namespace KIT206_RAP_Project.Database
             {
                 conn.Open();
                 Console.WriteLine("Trying...");
-                //string searchstring = " select * from publication where publication.doi=" + doiString;
-                //Console.WriteLine("Searchstring is {0}", searchstring);
+               
                 MySqlCommand cmd = new MySqlCommand("select * from publication where doi=?doi_string", conn);
-                //MySqlCommand cmd = new MySqlCommand(searchstring, conn);
+               
 
                 cmd.Parameters.AddWithValue("doi_string", doiString);
                 rdr = cmd.ExecuteReader();
@@ -295,15 +291,10 @@ namespace KIT206_RAP_Project.Database
                 }
                 while (rdr.Read())
                 {
-                    //p_out.DOI = rdr.GetString(1);
-                    //Console.WriteLine("p_out.DOI is:", p_out.DOI);
+                   
                     p_out.Title = rdr.GetString(0);
                     Console.WriteLine("p_out.Title is:", p_out.Title);
-                    /*p_out.Authors = rdr.GetString(3);
-                    p_out.Date = rdr.GetInt32(4);
-                    p_out.Type = Publication.ParseEnum<Publication.OutputType>(rdr.GetString(5));
-                    p_out.CiteAs = rdr.GetString(6);
-                    p_out.AvailableDate = rdr.GetDateTime(7);*/
+                   
                     Console.WriteLine("Iterating...");
                 }
 

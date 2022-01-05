@@ -12,7 +12,7 @@ using KIT206_RAP_Project.Database;
 namespace KIT206_RAP_Project
 {
     /* TODO 
-       1. Publications list in researcher details needs to be able to be filtered by year and sorted. 
+       1. Publications list in researcher details needs to be able to be filtered by year and sorted. NOT DONE.
        2. Staff members need to have the extra detail of their list of current students being supervised
        3. Researcher Details needs to include a previous positions table
        4. General Error catching (ie, unexpected input etc)

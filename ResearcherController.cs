@@ -154,6 +154,7 @@ namespace KIT206_RAP_Project.Control
                 Console.WriteLine("Choose a publication to view full details: Choose 1 to {0}", r2.Publications.Count);
             
                 int pub_selection = Convert.ToInt32(Console.ReadLine());
+                pub_selection=pub_selection-1;
                 Console.WriteLine("You selected: {0}", pub_selection);
                 Console.WriteLine("Its DOI is: {0}", (r2.Publications[pub_selection]).DOI);
                 var pub_selected=from publ in r2.Publications
