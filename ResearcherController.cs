@@ -140,6 +140,19 @@ namespace KIT206_RAP_Project.Control
                 Console.WriteLine("Performance for this staff member:" +  staff_perf.ToString("N1") + "%");
 
             }
+
+            if (r2 is KIT206_RAP_Project.Research.Staff)
+                { 
+                    Console.WriteLine("\nWould you like full list of students being supervised by this researcher? (y)es or (n)o.");
+                    string option2 = Console.ReadLine();
+                    if (option2 == "y")
+                    {      
+                        ad1.getSupervisions(r2.Id);
+                
+                    }
+
+                }
+
             Console.WriteLine("\nPublications of Researcher ID: {0} \n", IDnum);
             foreach (Publication p in r2.Publications)
             {

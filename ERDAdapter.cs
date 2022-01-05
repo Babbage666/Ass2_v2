@@ -331,5 +331,56 @@ namespace KIT206_RAP_Project.Database
             }
             return conn;
         }
+
+
+
+        
+    public void getSupervisions(int id_num)
+        {
+            
+            MySqlDataReader rdr = null;
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select given_name, family_name from researcher where supervisor_id=?id_num", conn);
+                cmd.Parameters.AddWithValue("id_num",id_num);
+                rdr = cmd.ExecuteReader();
+                Console.WriteLine("Students under supervision by this Researcher:");
+                while (rdr.Read())
+                {
+
+                    
+                    
+                   
+                   
+                       Console.WriteLine(rdr.GetString(0)+" "+rdr.GetString(1));
+                        
+
+                }
+                    
+
+                   
+                   
+                   
+
+
+                
+            }
+            finally
+            {
+                 if (rdr != null)
+                 {
+                     rdr.Close();
+                 }
+                 if (conn != null)
+                 {
+                     conn.Close();
+                 }
+            }
+           
+        }
     }
+
+
 }
