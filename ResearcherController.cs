@@ -156,8 +156,14 @@ namespace KIT206_RAP_Project.Control
                 int pub_selection = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("You selected: {0}", pub_selection);
                 Console.WriteLine("Its DOI is: {0}", (r2.Publications[pub_selection]).DOI);
+                var pub_selected=from publ in r2.Publications
+                                 where publ.DOI == (r2.Publications[pub_selection]).DOI
+                                 select publ;
 
-                Publication pub_selectionFull = ad1.completePublicationDetails((r2.Publications[pub_selection]).DOI);
+                //superName.ToList().ForEach(a => Console.WriteLine("Supervisor Name: " + a.GivenName + " "+ a.FamilyName));
+                pub_selected.ToList().ForEach(a => Console.WriteLine("DOI: " + a.DOI + "\nTitle:"+ a.Title + "\nAuthors:"+a.Authors + "\nPublication Year:"+a.Date + "\nType:"+a.Type+"\nCitation:"+a.CiteAs+"\nAvailable:"+a.AvailableDate));
+
+                //Publication pub_selectionFull = ad1.completePublicationDetails((r2.Publications[pub_selection]).DOI);
                 /*Console.WriteLine("DOI: {0} \n", pub_selectionFull.DOI);
                 Console.WriteLine("Title: {0} \n", pub_selectionFull.Title);
                 Console.WriteLine("Authors: {0} \n", pub_selectionFull.Authors);
@@ -189,8 +195,7 @@ namespace KIT206_RAP_Project.Control
                     where pub.Date == startYear + i
                     select pub;
                 int count = counter.Count();
-                //List<Publication> count = r.Publications.FindAll(delegate (Publication pub) { return pub.Date == startYear + i; });
-                //int yearCount = count.Count();
+               
                 Console.WriteLine("Year: {0}           |  Count: {1}       ", startYear+i, count);
             }
 
