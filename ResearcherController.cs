@@ -151,6 +151,14 @@ namespace KIT206_RAP_Project.Control
                 
                     }
 
+
+                    Console.WriteLine("\nWould you like the previous positions of this Staff member? (y)es or (n)o.");
+                    string option3=Console.ReadLine();
+                    if (option3=="y")
+                    {
+                       ad1.getPastPositions(r2.Id);
+                    }
+
                 }
 
             Console.WriteLine("\nPublications of Researcher ID: {0} \n", IDnum);

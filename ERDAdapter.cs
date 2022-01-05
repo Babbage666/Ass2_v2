@@ -350,20 +350,50 @@ namespace KIT206_RAP_Project.Database
                 while (rdr.Read())
                 {
 
-                    
-                    
-                   
                    
                        Console.WriteLine(rdr.GetString(0)+" "+rdr.GetString(1));
                         
 
                 }
+                  
+                
+            }
+            finally
+            {
+                 if (rdr != null)
+                 {
+                     rdr.Close();
+                 }
+                 if (conn != null)
+                 {
+                     conn.Close();
+                 }
+            }
+           
+        }
+
+
+        public void getPastPositions(int id_num)
+        {
+            
+            MySqlDataReader rdr = null;
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select start,end, level from position where id=?id_num", conn);
+                cmd.Parameters.AddWithValue("id_num",id_num);
+                rdr = cmd.ExecuteReader();
+                Console.WriteLine("Previous positions of this Researcher:");
+                while (rdr.Read())
+                {
+
+                       Console.WriteLine("Position:" + ERDAdapter.ParseEnum<EmploymentLevel>(rdr.GetString(2)));
+                       Console.WriteLine("Start:" + rdr.GetString(0));
+                       Console.WriteLine("End:"); // How do you deal with nulls???
+                   
+                }
                     
-
-                   
-                   
-                   
-
 
                 
             }
