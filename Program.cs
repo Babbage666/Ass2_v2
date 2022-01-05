@@ -13,7 +13,6 @@ namespace KIT206_RAP_Project
 {
     /* TODO 
        1. Publications list in researcher details needs to be able to be filtered by year and sorted. NOT DONE.
-       3. Researcher Details needs to include a previous positions table
        4. General Error catching (ie, unexpected input etc)
        5. WPF implementation needs to be included and completed
      * 
