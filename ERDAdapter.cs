@@ -223,6 +223,7 @@ namespace KIT206_RAP_Project.Database
                     conn.Close();
                 }
             }
+           
 
             return TestPubList;
         }
@@ -261,9 +262,8 @@ namespace KIT206_RAP_Project.Database
                 }
             }
 
-            
-
             return PublicationsList;
+            
         }
         
         public Publication completePublicationDetails(string doiString)
@@ -310,7 +310,6 @@ namespace KIT206_RAP_Project.Database
                     conn.Close();
                 }
             }
-
 
 
             return p_out;
