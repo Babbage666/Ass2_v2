@@ -167,6 +167,19 @@ namespace KIT206_RAP_Project.Control
                 Console.WriteLine("{0} : {1}", p.Date, p.Title);
             }
 
+            Console.WriteLine("\nWould you like to filter this list by year? (y)es or (n)o.");
+            string option11 = Console.ReadLine();
+            if (option11 == "y")
+            {
+                Console.WriteLine("Enter the year:");
+                int year_selection = Convert.ToInt32(Console.ReadLine());
+                var pubs_year_selected=from publ in r2.Publications
+                                 where publ.Date == year_selection
+                                 select publ;
+
+                pubs_year_selected.ToList().ForEach(a => Console.WriteLine("Date: " + a.Date + "\nTitle:"+ a.Title));
+            }
+
             Console.WriteLine("\nWould you like full details of one of these publications? (y)es or (n)o.");
             string option1 = Console.ReadLine();
             if (option1 == "y")

@@ -12,7 +12,7 @@ using KIT206_RAP_Project.Database;
 namespace KIT206_RAP_Project
 {
     /* TODO 
-       1. Publications list in researcher details needs to be able to be filtered by year and sorted. NOT DONE.
+       1. Publications list in researcher details needs to be able to be filtered by year DONE and sorted, in time order. NOT DONE.
        4. General Error catching (ie, unexpected input etc) NOT DONE
        5. WPF implementation needs to be included and completed NOT DONE
      * 
