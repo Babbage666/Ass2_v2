@@ -29,7 +29,8 @@ namespace KIT206_RAP_Project.Control
             ERDAdapter Adapter1 = new ERDAdapter();
             List<Research.Publication> PublicationList2 = new List<Research.Publication>();
             PublicationList2 = Adapter1.LoadPublications(id);
-            return PublicationList2;
+            List<Publication> sortedPubslist=PublicationList2.OrderBy(p => p.Date).ThenBy(p => p.Title).ToList();
+            return sortedPubslist;
 
         }
 
