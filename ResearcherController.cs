@@ -167,6 +167,18 @@ namespace KIT206_RAP_Project.Control
                 Console.WriteLine("{0} : {1}", p.Date, p.Title);
             }
 
+            Console.WriteLine("Would you like to view this list in reverse order? (y)es or (n)o.");
+            string option12 = Console.ReadLine();
+            if (option12 == "y")
+            {
+                //List<Publication> reversedPubs=new List<Publication>();
+                r2.Publications.Reverse();
+                foreach (Publication p in r2.Publications)
+                {
+                    Console.WriteLine("{0} : {1}", p.Date, p.Title);
+                }
+            }
+
             Console.WriteLine("\nWould you like to filter this list by year? (y)es or (n)o.");
             string option11 = Console.ReadLine();
             if (option11 == "y")
