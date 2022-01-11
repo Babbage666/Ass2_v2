@@ -270,9 +270,6 @@ namespace KIT206_RAP_Project.Database
         {
             conn = GetConnection();
             Publication p_out = new Publication();
-            Console.WriteLine("Entered the method.\n");
-            //Console.WriteLine("The Title is {0}", p.Title);
-            Console.WriteLine("The DOI is " + doiString);
             MySqlDataReader rdr = null;
 
             try

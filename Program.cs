@@ -12,7 +12,6 @@ using KIT206_RAP_Project.Database;
 namespace KIT206_RAP_Project
 {
     /* TODO 
-       1. Publications list in researcher details needs to be sorted, in time order. NOT DONE. Easier in GUI window probably.
        4. General Error catching (ie, unexpected input etc) NOT DONE
        5. WPF implementation needs to be included and completed NOT DONE
      * 
@@ -31,7 +30,7 @@ namespace KIT206_RAP_Project
 
             while (!quit)
             {
-                Console.WriteLine("\nPlease Select an option: \n 1: Display List \n 2: Filter List by Employment Level \n 3. Filter List by name  \n 4: Display Details \n 5: Achievement Report \n 0: Quit");
+                Console.WriteLine("\nPlease Select an option: \n 1: Display Researcher List \n 2: Filter List by Employment Level \n 3. Filter List by name  \n 4: Display Full Researcher Details \n 5: Achievement Report \n 0: Quit");
                 string option = Console.ReadLine();
                 Console.WriteLine("{0} selected", option);
                 switch (option) 

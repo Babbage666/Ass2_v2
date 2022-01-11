@@ -171,7 +171,7 @@ namespace KIT206_RAP_Project.Control
             string option12 = Console.ReadLine();
             if (option12 == "y")
             {
-                //List<Publication> reversedPubs=new List<Publication>();
+               
                 r2.Publications.Reverse();
                 foreach (Publication p in r2.Publications)
                 {
